@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # считаем от того места, где лежит manage.py
-from app1.views import get_data, two_pow, google_redirect, hello_admin, hello_guest, hello_user, my_word, success, login
+from app1.views import get_data, two_pow, google_redirect, hello_admin, hello_guest, hello_user, my_word, success, \
+    login, add_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +31,6 @@ urlpatterns = [
     path('my_word/<word>', my_word, name='my_word'),
     path('success/<name_success>', success, name='fun_success'),
     path('login/', login, name='login'),
+    path('add_user/', add_user, name='add_user')
 
 ]

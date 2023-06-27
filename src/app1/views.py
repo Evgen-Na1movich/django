@@ -54,16 +54,12 @@ def login(request):
 def success(request, name_success):
     return HttpResponse(f"Hello {name_success}")
 
+
 def add_user(request):
-    if request.POST.get == 'POST':
+    if request.method == 'POST':
         name = request.POST.get('name')
         lastname = request.POST.get('lastname')
         age = request.POST.get('age')
-        return HttpResponse(f"Hello {name} {lastname} You are {age} years old")
-
-
-
+        return request('add_user')
     else:
         pass
-
-
