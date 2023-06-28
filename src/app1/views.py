@@ -1,4 +1,6 @@
+import csv
 import datetime
+import os
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -56,10 +58,20 @@ def success(request, name_success):
 
 
 def add_user(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         name = request.POST.get('name')
         lastname = request.POST.get('lastname')
         age = request.POST.get('age')
-        return request('add_user')
+        if not os.path.exists('django_04.csv'):
+            with open('django_04.csv', 'w') as file:
+                fildnames = ['name', 'lastname', 'age']
+                csvwriter = csv.DictWriter(file, fieldnames=fildnames)
+                csvwriter.writeheader()
+        with open('django_04.csv', 'a') as file:
+            csvwriter = csv.writer(file)
+            csvwriter.writerow([name, lastname, age])
+        return HttpResponse(f'Data saved: Name - {name}, '
+                            f'Lastname - {lastname}, '
+                            f' age- {age}')
     else:
         pass
