@@ -81,6 +81,7 @@ def add_user(request):
         response = template.render({}, request)
         return HttpResponse(response)
 
+
 def add_user_v2(request):
     if request.method == "POST":
         form = UserForm(request.POST)
@@ -89,16 +90,11 @@ def add_user_v2(request):
             name = data.get('name')
             lastname = data.get('lastname')
             age = data.get('age')
-
-            request.method == "POST":
-            form = request.POST
-            name = request.POST.get('name')
-            lastname = request.POST.get('lastname')
-            age = request.POST.get('age')
-            return HttpResponse(f'Data saved: Name - {name}, '
-                                f'Lastname - {lastname}, '
-                                f' age- {age}')
+            content = {'user': {'fn': name, 'ln': lastname, 'age': age}}
+            return render(request, 'django_06_display', content)
+        else:
+            errors = form.errors
+            return HttpResponse(f'errors- {errors}')
     else:
-        template = loader.get_template("django_05.html")
-        response = template.render({}, request)
-        return render(request, 'django_06_form.html', {'form': UserForm()})
+        content = {'form': UserForm()}
+        return render(request, 'django_06_form.html', content)
