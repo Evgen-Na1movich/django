@@ -82,21 +82,22 @@ def add_user(request):
         return HttpResponse(response)
 
 def add_user_v2(request):
-    form = CommentForm(request.POST)
-    if form.is_valid:
-        data = form.cleaned_data
-        name = data.get('name')
-        lastname = data.get('lastname')
-        age = data.get('age')
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid:
+            data = form.cleaned_data
+            name = data.get('name')
+            lastname = data.get('lastname')
+            age = data.get('age')
 
-        request.method == "POST":
-        form = request.POST
-        name = request.POST.get('name')
-        lastname = request.POST.get('lastname')
-        age = request.POST.get('age')
-        return HttpResponse(f'Data saved: Name - {name}, '
-                            f'Lastname - {lastname}, '
-                            f' age- {age}')
+            request.method == "POST":
+            form = request.POST
+            name = request.POST.get('name')
+            lastname = request.POST.get('lastname')
+            age = request.POST.get('age')
+            return HttpResponse(f'Data saved: Name - {name}, '
+                                f'Lastname - {lastname}, '
+                                f' age- {age}')
     else:
         template = loader.get_template("django_05.html")
         response = template.render({}, request)
