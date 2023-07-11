@@ -19,11 +19,9 @@ from django.urls import path
 # считаем от того места, где лежит manage.py
 from app1.views import get_data, two_pow, google_redirect, hello_admin, hello_guest, hello_user, my_word, success, \
     login, add_user, add_user_v2
-from school.views import *
+from school.views import all_groups_view, all_students_of_the_groups
 
 urlpatterns = [
     path('groups/', all_groups_view, name='all_groups'),
-    path('students/<int:group_id>', all_students_of_the_groups, name='groups_students'),
-
-
+    path('students/<int:group_id>', all_students_of_the_groups, name='students'),
 ]

@@ -3,9 +3,12 @@
 {% block title %}show groups{% endblock %}
 
 {% block content %}
-<h1>список групп</h1>
+<h1>Cписок групп </h1>
+<ul>
     {% for group in groups %}
-        <h3>{{ group.name }}</h3>
-
+        <li>
+            <a href="{% url 'students' group.pk %}">{{ group.name }}</a>
+        </li>
     {% endfor %}
+</ul>
 {% endblock %}

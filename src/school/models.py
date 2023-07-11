@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Group(models.Model):
@@ -22,6 +23,9 @@ class Student(models.Model):
 
     def __str__(self):
         return f'{self.lastname}'
+
+    def get_absolut_url(self):
+        return reverse('students', kwargs={'group_id': self.pk})
 
 
 class Diary(models.Model):
