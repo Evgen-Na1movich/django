@@ -1,0 +1,19 @@
+{% extends "main_catdogs.html" %}
+
+{% block title %} catdog {% endblock %}
+
+{% block content %}
+<h1>There is a picture {{ name }}</h1>
+
+<img src="{{ url }}"   class="img-thumbnail" alt="Cinque Terre">
+<h2> image saved</h2>
+
+
+<form action="{% url 'send_email'%}" method="post">
+    {% csrf_token %}
+    <h3> введите адрес для отправки</h3>
+    <input type="email" name="email">
+    <button type='submit' name='cat' class="btn btn-warning">send link to</button>
+</form>
+
+{% endblock %}

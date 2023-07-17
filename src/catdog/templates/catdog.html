@@ -4,6 +4,7 @@
 
 {% block content %}
 <form action="{% url 'catdog'%}" method="post">
+    {% csrf_token %}
     <button type='submit' name='cat' class="btn btn-warning">I love cat</button>
 
 
