@@ -12,8 +12,8 @@
 <form action="{% url 'send_email'%}" method="post">
     {% csrf_token %}
     <h3> введите адрес для отправки</h3>
-    <input type="email" name="email">
-    <button type='submit' name='cat' class="btn btn-warning">send link to</button>
+    <input type="email" name="mail">
+    <button type='submit' name='url' value="{{ url }}" class="btn btn-warning">send link to</button>
 </form>
 
 {% endblock %}

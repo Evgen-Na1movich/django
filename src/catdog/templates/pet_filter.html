@@ -1,0 +1,15 @@
+{% extends "main_catdogs.html" %}
+
+{% block title %} выбор сохраненых животных {% endblock %}
+
+{% block content %}
+<h1> список картинок</h1>
+
+{% for pet in pets %}
+<p><a href="{{ pet.url }}">{{ pet.url }}</a></p>
+
+<img src="{{ pet.url }}"   class="img-thumbnail" alt="Cinque Terre" height='100'>
+
+{% endfor %}
+
+{% endblock %}

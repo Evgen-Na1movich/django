@@ -19,11 +19,12 @@ from django.urls import path
 
 
 # считаем от того места, где лежит manage.py
-from catdog.views import catdog_view, save_gatdog, send_email
+from catdog.views import catdog_view, save_gatdog, send_image_to_email, pet_filter
 
 urlpatterns = [
     path('', catdog_view, name='catdog'),
     path('save_catdog', save_gatdog, name='save_catdog'),
-    path('send_email', send_email, name='send_email'),
+    path('send_email', send_image_to_email, name='send_email'),
+    path('pet_filter', pet_filter, name='pet_filter'),
 
 ]

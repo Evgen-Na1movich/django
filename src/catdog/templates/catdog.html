@@ -1,8 +1,9 @@
 {% extends "main_catdogs.html" %}
 
-{% block title %} gatdog {% endblock %}
+{% block title %} catdog {% endblock %}
 
 {% block content %}
+<div>
 <form action="{% url 'catdog'%}" method="post">
     {% csrf_token %}
     <button type='submit' name='cat' class="btn btn-warning">I love cat</button>
@@ -10,5 +11,15 @@
 
     <button type='submit' name='dog' class="btn btn-warning">I love dog</button>
 </form>
+<br>
+<form action="{% url 'pet_filter'%}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type='submit' class="btn btn-warning">show pet</button>
+</form>
+</div>
+
+
 
 {% endblock %}
