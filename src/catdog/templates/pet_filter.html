@@ -3,12 +3,12 @@
 {% block title %} выбор сохраненых животных {% endblock %}
 
 {% block content %}
-<h1> список картинок</h1>
+<h1> список ваших картинок</h1>
 
 {% for pet in pets %}
-<p><a href="{{ pet.url }}">{{ pet.url }}</a></p>
+    <p><a href="{{ pet.url }}">{{ pet.url }}</a></p>
 
-<img src="{{ pet.url }}"   class="img-thumbnail" alt="Cinque Terre" height='100'>
+    <img src="{{ pet.url }}" class="img-thumbnail" alt="Cinque Terre" height='100'>
 
 {% endfor %}
 

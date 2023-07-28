@@ -38,7 +38,7 @@ def catdog_view(request):
             content = {'url': url}
             type_image = url.split('.')[::-1]
             data_for_session = {'url': url,
-                                'speicies': AnimalImage.CHOICES_SP[0][0],
+                                'speicies': AnimalImage.CHOICES_SP[1][0],
                                 'type': type_image
                                 }
             request.session['data_for_session'] = data_for_session
@@ -61,7 +61,7 @@ def save_gatdog(request):
 
 
 def send_image_to_email(request):
-    url = request.POST.get('url')
+    url = request.POST.get('url_for_image')
     send_mail(
         "Subject here",
         f"Here is the message - {url}.",

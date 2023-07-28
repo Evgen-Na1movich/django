@@ -3,11 +3,11 @@
 {% block title %} catdog {% endblock %}
 
 {% block content %}
-<h1>There is a picture {{ name }}</h1>
+<h1>Here is a picture {{ name }}</h1>
 
-<img src="{{ url }}"   class="img-thumbnail" alt="Cinque Terre">
+<img src="{{ url }}" class="img-thumbnail" alt="Cinque Terre">
 <form action="{% url 'save_catdog'%}" method="post">
     {% csrf_token %}
-    <button type='submit' name='cat' class="btn btn-warning">SAVE this image</button>
+    <button type='submit' name='pet' class="btn btn-warning">Save this image</button>
 </form>
 {% endblock %}
