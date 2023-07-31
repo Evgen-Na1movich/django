@@ -17,9 +17,9 @@ def catdog_view(request):
     if request.method == 'POST':
         request.session.set_expiry(30)
         if 'cat' in request.POST:
-            responce = requests.get(URL_FOR_CATS)
-            recponce_dict = responce.json()
-            url = recponce_dict[0]['url']
+            response = requests.get(URL_FOR_CATS)
+            recponse_dict = response.json()
+            url = recponse_dict[0]['url']
             type_image = url.split('.')[::-1]
             content = {'url': url}
             data_for_session = {'url': url,
@@ -32,9 +32,9 @@ def catdog_view(request):
             #                            create_at=datetime.datetime.now(), type=type_image)
 
         elif 'dog' in request.POST:
-            responce = requests.get(URL_FOR_DOGS)
-            respone_dict = responce.json()
-            url = respone_dict['message']
+            response = requests.get(URL_FOR_DOGS)
+            response_dict = response.json()
+            url = response_dict['message']
             content = {'url': url}
             type_image = url.split('.')[::-1]
             data_for_session = {'url': url,
@@ -47,7 +47,7 @@ def catdog_view(request):
         else:
             raise AttributeError(' at home')
 
-    return render(request, 'pet.html', context=content)
+        return render(request, 'pet.html', context=content)
 
 
 def save_gatdog(request):
@@ -57,7 +57,7 @@ def save_gatdog(request):
                                    type=data_for_write['type'],
                                    )
         data = {'url': data_for_write['url']}
-    return render(request, 'pet_saved.html', context=data)
+        return render(request, 'pet_saved.html', context=data)
 
 
 def send_image_to_email(request):
@@ -78,4 +78,4 @@ def pet_filter(request):
         if form.is_valid():
             data = form.cleaned_data
             pets = AnimalImage.objects.filter(speicies=data.get('pet'))
-    return render(request, 'pet_filter.html', context={'pets': pets})
+            return render(request, 'pet_filter.html', context={'pets': pets})
